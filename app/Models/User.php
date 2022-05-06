@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Model\Job;
+use App\Models\Job;
 
 class User extends Authenticatable
 {
@@ -50,5 +50,9 @@ class User extends Authenticatable
 
     public function jobs(){
         return $this->hasMany(Job::class);
+    }
+
+    public function likes(){
+        return $this->belongsToMany(Job::class);
     }
 }
